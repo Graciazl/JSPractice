@@ -15,10 +15,11 @@ var $ = function(id) {
         for (i = 0; i < ul-1; i++) {
             var child = $('#source').children[i],
                 str = child.innerHTML.split(':'),
-                air = str[1],
-                str1 = str[0].split('of'),
+                air = parseInt(str[1]),
+                str1 = str[0].split('of '),
                 city = str1[1];
-            data.push(city,air);
+                arr = [city, air];
+            data.push(arr);
         }
 
         return data;
@@ -33,7 +34,8 @@ var $ = function(id) {
     }
 
     document.getElementById('sortBtn').addEventListener('click', function(){
-
+        var result = getData();
+        alert(result);
     });
 
 })();
