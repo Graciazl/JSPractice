@@ -12,7 +12,7 @@ var $ = function(id) {
         var data = [],
             ul = $('#source').childElementCount;
 
-        for (i = 0; i < ul-1; i++) {
+        for (i = 0; i < ul; i++) {
             var child = $('#source').children[i],
                 str = child.innerHTML.split(':'),
                 air = parseInt(str[1]),
@@ -39,7 +39,7 @@ var $ = function(id) {
         var cityList = sortData(),
             len = cityList.length;
 
-        for (i = 0; i < len - 1; i++) {
+        for (i = 0; i < len; i++) {
             var city = cityList[i][0],
                 air = cityList[i][1],
                 textnode = document.createTextNode("Air pollution index of " + city + ":" + air),
