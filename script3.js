@@ -26,7 +26,11 @@ var $ = function(id) {
     }
 
     function sortData() {
-
+        var airList = getData();
+        airList.sort(function (a, b){
+            return a[1] > b[1] ? 1 : -1;
+        });
+        return airList;
     }
 
     function renderData() {
@@ -34,8 +38,7 @@ var $ = function(id) {
     }
 
     document.getElementById('sortBtn').addEventListener('click', function(){
-        var result = getData();
-        alert(result);
+
     });
 
 })();
