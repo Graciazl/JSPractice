@@ -7,8 +7,10 @@
 <body>
 
 <div>
-    <label>City:<input id="cityInput" type="text"></label><br>
+    <label>City:<input id="cityInput" type="text" pattern="[a-zA-Z]+" maxlength="20"></label><br>
+    <p id="alertP1"></p>
     <label>Air condition index:<input id="airInput" type="text"></label><br>
+    <p id="alertP2"></p>
     <button id="add-btn">Add</button>
 </div>
 
