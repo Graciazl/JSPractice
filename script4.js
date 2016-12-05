@@ -11,23 +11,26 @@ var $ = function (id) {
     var data = [],
         city = $('#cityInput'),
         air = $('#airInput'),
-        list = {
-            cityName: city.value,
-            airIndex: air.value
-        };
+        cityValue = city.value.trim(),
+        airValue = city.value.trim(),
+        p1 = $('#alertP1'),
+        p2 = $('#alertP2'),
+        list = {};
 
     function addData() {
-
+        if ( (p1.innerHTML === '') && (p2.innerHTML === '')) {
+            return list[cityValue] = airValue;
+        }
     }
 
     function isInteger(x) {
         return x % 1 === 0;
     }   // Check if the number is an integer
 
-    function createNewRow() {
+    function createNewRow(data) {
         var newCell = document.createElement('td'),
             newRow = document.createElement('tr'),
-            newText = document.createTextNode();
+            newText = document.createTextNode(data);
 
         newCell.appendChild(newText);
         newRow.appendChild(newRow);
@@ -39,8 +42,6 @@ var $ = function (id) {
     }
 
     city.addEventListener('blur', function() {
-        var p1 = $('#alertP1');
-
         if (city.validity.valueMissing) {
             p1.innerHTML = 'City name should not be empty.';
         } else if (city.validity.patternMismatch) {
@@ -51,8 +52,6 @@ var $ = function (id) {
     });
 
     air.addEventListener('blur', function() {
-        var p2 = $('#alertP2');
-
         if (air.validity.valueMissing) {
             p2.innerHTML = 'Air index should not be empty.';
         } else if (isNaN(air.value)) {
@@ -67,7 +66,6 @@ var $ = function (id) {
     $('#add-btn').addEventListener('click', function () {
 
     });
-
 
 })();
 
