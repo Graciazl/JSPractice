@@ -17,9 +17,9 @@ var $ = function (id) {
         p2 = $('#alertP2'),
         list = {};
 
-    function addData() {
+    function addData(property, value) {
         if ( (p1.innerHTML === '') && (p2.innerHTML === '')) {
-            return list[cityValue] = airValue;
+            return list[property] = value;
         }
     }
 
@@ -54,9 +54,9 @@ var $ = function (id) {
     air.addEventListener('blur', function() {
         if (air.validity.valueMissing) {
             p2.innerHTML = 'Air index should not be empty.';
-        } else if (isNaN(air.value)) {
+        } else if (isNaN(airValue)) {
             p2.innerHTML = 'Please enter the valid value of air index.';
-        } else if (isInteger(air.value) === false ) {
+        } else if (isInteger(airValue) === false ) {
             p2.innerHTML = 'Valid value of air index should be integer.';
         } else {
             p2.innerHTML = '';
@@ -64,6 +64,7 @@ var $ = function (id) {
     });
 
     $('#add-btn').addEventListener('click', function () {
+        addData(cityValue, airValue);
 
     });
 
