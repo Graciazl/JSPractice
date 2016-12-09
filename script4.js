@@ -11,8 +11,7 @@ var $ = function (id) {
     var data = [],
         city = $('#cityInput'),
         air = $('#airInput'),
-        cityValue = city.value.trim(),
-        airValue = city.value.trim(),
+        myTB = $('#tableData'),
         p1 = $('#alertP1'),
         p2 = $('#alertP2'),
         list = {};
@@ -27,14 +26,28 @@ var $ = function (id) {
         return x % 1 === 0;
     }   // Check if the number is an integer
 
-    function createNewRow(data) {
+    function renderTable(data) {
         var newCell = document.createElement('td'),
             newRow = document.createElement('tr'),
-            newText = document.createTextNode(data);
+            newBtn = document.createElement('button'),
+            del = document.createTextNode('Delete');
 
-        newCell.appendChild(newText);
-        newRow.appendChild(newRow);
-        $('#tableData').appendChild(newRow);
+        myTB.innerHTML = '';// clear table
+
+        for (var prop in data) {
+            var newCity = document.createTextNode(prop),
+                newAir = document.createTextNode(data[prop]);
+
+            newCell.appendChild(newCity);
+            newRow.appendChild(newCell);
+            newCell.appendChild(newAir);
+            newRow.appendChild(newCell);
+            newBtn.appendChild(del);
+            newCell.appendChild(newBtn);
+            newRow.appendChild(newCell);
+            myTB.appendChild(newRow);
+        }
+
     }
 
     function delBtn() {
@@ -52,6 +65,8 @@ var $ = function (id) {
     });
 
     air.addEventListener('blur', function() {
+        var airValue = air.value;
+
         if (air.validity.valueMissing) {
             p2.innerHTML = 'Air index should not be empty.';
         } else if (isNaN(airValue)) {
@@ -64,7 +79,11 @@ var $ = function (id) {
     });
 
     $('#add-btn').addEventListener('click', function () {
+        var cityValue = city.value.trim(),
+            airValue = air.value.trim();
+
         addData(cityValue, airValue);
+        renderTable(list);
 
     });
 
