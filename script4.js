@@ -32,22 +32,16 @@ var $ = function (id) {
             newBtn = document.createElement('button'),
             del = document.createTextNode('Delete');
 
-        myTB.innerHTML = '';// clear table
-
         for (var prop in data) {
-            var newCity = document.createTextNode(prop),
-                newAir = document.createTextNode(data[prop]);
-
-            newCell.appendChild(newCity);
-            newRow.appendChild(newCell);
-            newCell.appendChild(newAir);
-            newRow.appendChild(newCell);
-            newBtn.appendChild(del);
-            newCell.appendChild(newBtn);
-            newRow.appendChild(newCell);
-            myTB.appendChild(newRow);
+            var airList = document.createTextNode(prop + data[prop]);
         }
 
+        newCell.appendChild(airList);
+        newRow.appendChild(newCell);
+        newBtn.appendChild(del);
+        newCell.appendChild(newBtn);
+        newRow.appendChild(newCell);
+        myTB.appendChild(newRow);
     }
 
     function delBtn() {
