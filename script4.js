@@ -44,8 +44,9 @@ var $ = function (id) {
         myTB.appendChild(newRow);
     }
 
-    function delBtn() {
-
+    function delBtn(obj, prop) {
+        delete obj[prop];
+        renderTable(obj);
     }
 
     city.addEventListener('blur', function() {
@@ -80,6 +81,6 @@ var $ = function (id) {
         renderTable(list);
 
     });
-
+    
 })();
 
