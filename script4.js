@@ -26,17 +26,20 @@ var $ = function (id) {
         return x % 1 === 0;
     }   // Check if the number is an integer
 
-    function renderTable(data) {
+    function renderTable() {
         var newCell = document.createElement('td'),
             newRow = document.createElement('tr'),
             newBtn = document.createElement('button'),
             del = document.createTextNode('Delete');
 
-        for (var prop in data) {
-            var airList = document.createTextNode(prop + data[prop]);
+        for (var prop in list) {
+            var cityList = document.createTextNode(prop),
+                airIndex = document.createTextNode(list[prop]);
         }
 
-        newCell.appendChild(airList);
+        newCell.appendChild(cityList);
+        newRow.appendChild(newCell);
+        newCell.appendChild(airIndex);
         newRow.appendChild(newCell);
         newBtn.appendChild(del);
         newCell.appendChild(newBtn);
@@ -44,9 +47,12 @@ var $ = function (id) {
         myTB.appendChild(newRow);
     }
 
-    function delBtn(obj, prop) {
-        delete obj[prop];
-        renderTable(obj);
+    function delBtn(target) {
+        var tr = target.parentElement.parentElement,
+            prop = tr.firstChild.innerHtml;
+
+        delete list[prop];
+        renderTable();
     }
 
     city.addEventListener('blur', function() {
@@ -78,9 +84,14 @@ var $ = function (id) {
             airValue = air.value.trim();
 
         addData(cityValue, airValue);
-        renderTable(list);
+        renderTable();
 
     });
-    
+
+    myTB.addEventListener('click', function(event){
+        if(event.target.nodeName === 'BUTTON') {
+            delBtn(event.target);
+        }
+    });
 })();
 
