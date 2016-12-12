@@ -49,7 +49,7 @@ var $ = function (id) {
 
     function delBtn(target) {
         var tr = target.parentElement.parentElement,
-            prop = tr.firstChild.innerHtml;
+            prop = tr.firstChild.innerHTML;
 
         delete list[prop];
         renderTable();
