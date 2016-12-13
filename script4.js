@@ -32,20 +32,20 @@ var $ = function (id) {
         for (var prop in list) {
             var cityList = document.createTextNode(prop),
                 airIndex = document.createTextNode(list[prop]),
-                newCell1 = document.createElement('td'),
-                newCell2 = document.createElement('td'),
-                newCell3 = document.createElement('td'),
+                cell1 = document.createElement('td'),
+                cell2 = document.createElement('td'),
+                cell3 = document.createElement('td'),
                 newRow = document.createElement('tr'),
                 newBtn = document.createElement('button'),
                 del = document.createTextNode('Delete');
 
-            newCell1.appendChild(cityList);
-            newRow.appendChild(newCell1);
-            newCell2.appendChild(airIndex);
-            newRow.appendChild(newCell2);
+            cell1.appendChild(cityList);
+            newRow.appendChild(cell1);
+            cell2.appendChild(airIndex);
+            newRow.appendChild(cell2);
             newBtn.appendChild(del);
-            newCell3.appendChild(newBtn);
-            newRow.appendChild(newCell3);
+            cell3.appendChild(newBtn);
+            newRow.appendChild(cell3);
             myTB.appendChild(newRow);
         }
     }
