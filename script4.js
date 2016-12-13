@@ -27,24 +27,27 @@ var $ = function (id) {
     }   // Check if the number is an integer
 
     function renderTable() {
-        var newCell = document.createElement('td'),
-            newRow = document.createElement('tr'),
-            newBtn = document.createElement('button'),
-            del = document.createTextNode('Delete');
+        myTB.innerHTML = '';
 
         for (var prop in list) {
             var cityList = document.createTextNode(prop),
-                airIndex = document.createTextNode(list[prop]);
-        }
+                airIndex = document.createTextNode(list[prop]),
+                newCell1 = document.createElement('td'),
+                newCell2 = document.createElement('td'),
+                newCell3 = document.createElement('td'),
+                newRow = document.createElement('tr'),
+                newBtn = document.createElement('button'),
+                del = document.createTextNode('Delete');
 
-        newCell.appendChild(cityList);
-        newRow.appendChild(newCell);
-        newCell.appendChild(airIndex);
-        newRow.appendChild(newCell);
-        newBtn.appendChild(del);
-        newCell.appendChild(newBtn);
-        newRow.appendChild(newCell);
-        myTB.appendChild(newRow);
+            newCell1.appendChild(cityList);
+            newRow.appendChild(newCell1);
+            newCell2.appendChild(airIndex);
+            newRow.appendChild(newCell2);
+            newBtn.appendChild(del);
+            newCell3.appendChild(newBtn);
+            newRow.appendChild(newCell3);
+            myTB.appendChild(newRow);
+        }
     }
 
     function delBtn(target) {
