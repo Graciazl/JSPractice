@@ -22,10 +22,6 @@ var $ = function (id) {
         }
     }
 
-    function isInteger(x) {
-        return x % 1 === 0;
-    }   // Check if the number is an integer
-
     function renderTable() {
         myTB.innerHTML = '';
 
@@ -69,13 +65,13 @@ var $ = function (id) {
     });
 
     air.addEventListener('blur', function() {
-        var airValue = air.value;
+        var airValue = Number(air.value);
 
         if (air.validity.valueMissing) {
             p2.innerHTML = 'Air index should not be empty.';
         } else if (isNaN(airValue)) {
             p2.innerHTML = 'Please enter the valid value of air index.';
-        } else if (isInteger(airValue) === false ) {
+        } else if (!Number.isInteger(airValue)) {
             p2.innerHTML = 'Valid value of air index should be integer.';
         } else {
             p2.innerHTML = '';
