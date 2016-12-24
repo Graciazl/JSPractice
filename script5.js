@@ -4,7 +4,7 @@
 
 function randomBuildData(seed) {
     var returnData = {},
-        dat = new Date("2016-01-01"),
+        dat = new Date("01-01-2016"),
         datStr = '';
 
     for (var i = 1; i < 92; i++) {
