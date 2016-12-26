@@ -5,16 +5,16 @@
     <title>Title</title>
 </head>
 <body>
-<fieldset id="form-gra-time">
+<fieldset id="timeSelect">
     <legend>Choose time period：</legend>
-    <label>Daily<input name="gra-time" value="day" type="radio" checked="checked"></label>
-    <label>Weekly<input name="gra-time" value="week" type="radio"></label>
-    <label>Monthly<input name="gra-time" value="month" type="radio"></label>
+    <label>Daily<input name="graficTime" value="day" type="radio" checked="checked"></label>
+    <label>Weekly<input name="graficTime" value="week" type="radio"></label>
+    <label>Monthly<input name="graficTime" value="month" type="radio"></label>
 </fieldset>
 
 <fieldset>
     <legend>Choose city：</legend>
-    <select id="city-select">
+    <select id="citySelect">
         <option>Beijing</option>
         <option>Singapore</option>
         <option>Mexico</option>
@@ -22,7 +22,7 @@
     </select>
 </fieldset>
 
-<div class="aqi-chart-wrap">
+<div class="chartDisplay">
 </div>
 <script src="script5.js"></script>
 </body>
