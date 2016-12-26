@@ -33,3 +33,24 @@ var aqiSourceData = {
     "Mexico": randomBuildData(500),
     "Toronto": randomBuildData(80)
 };
+
+var timeSelected,
+    citySelected;
+
+function timeSelect() {
+    var time = document.getElementsByName('graficTime');
+
+    for (var i = 0; i < time.length; i++) {
+        if (time[i].checked) {
+            return timeSelected = time[i].value;
+        }
+    }
+}
+
+function citySelect() {
+    var optIndex = document.getElementById('citySelect').selectedIndex;
+
+    citySelected = document.getElementsByTagName('option')[optIndex].value;
+
+    return citySelected;
+}
