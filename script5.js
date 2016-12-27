@@ -54,3 +54,16 @@ function citySelect() {
 
     return citySelected;
 }
+
+function getData(city) {
+    var airObj = aqiSourceData[city],
+        airIndex = [];
+
+
+    for (var obj in airObj) {
+        airIndex.push(airObj[obj]);
+    }
+
+    return airIndex;
+}
+
