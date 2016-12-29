@@ -64,3 +64,29 @@ function getAirIndex(air) {
 
     return airIndex;
 }
+
+function getDate(data) {
+    var dateList = Object.getOwnPropertyNames(data),
+        date1 = new Date(dateList[0]),
+        date2 = new Date(dateList[dateList.length - 1]);
+
+    var firstDate = date1.getDay(),
+        lastDate = date2.getDay();
+
+    var firstCount,
+        lastCount = lastDate,
+        count = [];
+
+    if (firstDate === 1) {
+        firstCount = 0;
+    } else if (firstDate === 0) {
+        firstCount = 1;
+    } else {
+        firstCount = 8 - firstDate;
+    }
+
+    count.push(firstCount);
+    count.push(lastCount);
+
+    return count;
+}
