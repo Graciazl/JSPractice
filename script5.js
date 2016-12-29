@@ -69,6 +69,7 @@ function getDate(data) {
     var dateList = Object.getOwnPropertyNames(data),
         date1 = new Date(dateList[0].replace(/-/g, '\/')),
         date2 = new Date(dateList[dateList.length - 1].replace(/-/g, '\/'));
+        //Use regexp to replace date string , this method can rectify the one day off problem.
 
     var firstDate = date1.getDay(),
         lastDate = date2.getDay();
@@ -89,4 +90,16 @@ function getDate(data) {
     count.push(lastCount);
 
     return count;
+}
+
+function sumAndAvg(arr) {
+    var sum,
+        avg,
+        len = arr.length;
+
+    sum = arr.reduce(function(a, b) {
+        return a + b;
+    });
+
+    return avg = Math.floor(sum / len);
 }
