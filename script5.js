@@ -67,8 +67,8 @@ function getAirIndex(air) {
 
 function getDate(data) {
     var dateList = Object.getOwnPropertyNames(data),
-        date1 = new Date(dateList[0]),
-        date2 = new Date(dateList[dateList.length - 1]);
+        date1 = new Date(dateList[0].replace(/-/g, '\/')),
+        date2 = new Date(dateList[dateList.length - 1].replace(/-/g, '\/'));
 
     var firstDate = date1.getDay(),
         lastDate = date2.getDay();
