@@ -103,3 +103,17 @@ function sumAndAvg(arr) {
 
     return avg = Math.floor(sum / len);
 }
+
+function midAvg(arr) {
+    var len = (arr.length + 1) / 7,
+        midAvg = [];
+
+    for(var i = 0; i < len - 1; i++) {
+        var newArr = arr.slice(i * 7, i * 7 + 6),
+            avg = sumAndAvg(newArr);
+
+        midAvg.push(avg);
+    }
+
+    return midAvg;
+}
