@@ -117,3 +117,24 @@ function midAvg(arr) {
 
     return midAvg;
 }
+
+function calWeek(airIdx, count) {
+    var newArr = airIdx.slice(),
+        len = newArr.length,
+        lastPosition = len - 1 - count[1];
+
+    var firstWeek = newArr.slice(0, count[0]),
+        lastWeek = newArr.slice(lastPosition, len - 1);
+
+    var firstAvg = sumAndAvg(firstWeek),
+        lastAvg = sumAndAvg(lastWeek);
+
+    newArr.splice(lastPosition, count[1]);
+    newArr.splice(0, count[0]);
+
+    var midArr = midAvg(newArr);
+    midArr.splice(midArr.length, 0, lastAvg);
+    midArr.splice(0, 0, firstAvg);
+
+    return midArr;
+}
