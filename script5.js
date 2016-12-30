@@ -138,3 +138,17 @@ function calWeek(airIdx, count) {
 
     return midArr;
 }
+
+function calMonth(airIdx) {
+    var newArr = [];
+
+    var janAvg = sumAndAvg(airIdx.slice(0, 30)),
+        febAvg = sumAndAvg(airIdx.slice(31, 59)),
+        marAvg = sumAndAvg(airIdx.slice(60, 91));
+
+    newArr.push(janAvg);
+    newArr.push(febAvg);
+    newArr.push(marAvg);
+
+    return newArr;
+}
