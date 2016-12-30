@@ -118,9 +118,10 @@ function midAvg(arr) {
     return midAvg;
 }
 
-function calWeek(airIdx, count) {
+function calWeek(airIdx, airObj) {
     var newArr = airIdx.slice(),
         len = newArr.length,
+        count = getDate(airObj);
         lastPosition = len - 1 - count[1];
 
     var firstWeek = newArr.slice(0, count[0]),
@@ -155,11 +156,10 @@ function calMonth(airIdx) {
 
 function calculateData(city, time) {
     var airObj = aqiSourceData[city],
-        airArr = getAirIndex(airObj),
-        dateCount = getDate(airObj);
+        airArr = getAirIndex(airObj);
 
     if (time === 'week') {
-        return calWeek(airArr, dateCount);
+        return calWeek(airArr, airObj);
     } else if (time === 'month') {
         return calMonth(airArr);
     } else {
