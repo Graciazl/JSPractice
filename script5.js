@@ -152,3 +152,17 @@ function calMonth(airIdx) {
 
     return newArr;
 }
+
+function calculateData(city, time) {
+    var airObj = aqiSourceData[city],
+        airArr = getAirIndex(airObj),
+        dateCount = getDate(airObj);
+
+    if (time === 'week') {
+        return calWeek(airArr, dateCount);
+    } else if (time === 'month') {
+        return calMonth(airArr);
+    } else {
+        return airArr;
+    }
+}
