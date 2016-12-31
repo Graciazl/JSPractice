@@ -2,6 +2,10 @@
  * Created by Gracia on 16/12/17.
  */
 
+
+/**
+ * Generate random data of air quality index.
+ */
 function randomBuildData(seed) {
     var returnData = {},
         dat = new Date("01-01-2016"),
@@ -37,6 +41,9 @@ var aqiSourceData = {
 var timeSelected,
     citySelected;
 
+/**
+ * Deal with the time and city selected by user.
+ */
 function timeSelect() {
     var time = document.getElementsByName('graficTime');
 
@@ -55,6 +62,9 @@ function citySelect() {
     return citySelected;
 }
 
+/**
+ * Transfer air quality index from object to array
+ */
 function getAirIndex(air) {
     var airIndex = [];
 
@@ -65,6 +75,10 @@ function getAirIndex(air) {
     return airIndex;
 }
 
+/**
+ * Use date method to count days in the begging and the end of week,
+ * the weekly average air index will be counted from Monday to Sunday.
+ */
 function getDate(data) {
     var dateList = Object.getOwnPropertyNames(data),
         date1 = new Date(dateList[0].replace(/-/g, '\/')),
@@ -92,6 +106,9 @@ function getDate(data) {
     return count;
 }
 
+/**
+ * Sum index and get the average.
+ */
 function sumAndAvg(arr) {
     var sum,
         avg,
@@ -104,6 +121,9 @@ function sumAndAvg(arr) {
     return avg = Math.floor(sum / len);
 }
 
+/**
+ * Get average air index of every Monday to Sunday.
+ */
 function midAvg(arr) {
     var len = (arr.length + 1) / 7,
         midAvg = [];
@@ -118,6 +138,9 @@ function midAvg(arr) {
     return midAvg;
 }
 
+/**
+ * Count average air index by week or month.
+ */
 function calWeek(airIdx, airObj) {
     var newArr = airIdx.slice(),
         len = newArr.length,
@@ -167,6 +190,9 @@ function calculateData(city, time) {
     }
 }
 
+/**
+ * Render chart.
+ */
 function renderChart(airIdx, time) {
     document.getElementById('chartDisplay').innerHTML = '';
 
