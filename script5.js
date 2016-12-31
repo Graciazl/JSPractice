@@ -225,3 +225,10 @@ function colorControl(airIdx) {
 
     return color;
 }
+
+document.getElementById('chartGenerate').addEventListener('click', function () {
+    timeSelect();
+    citySelect();
+    var airIndex = calculateData(citySelected, timeSelected);
+    renderChart(airIndex, timeSelected);
+});
