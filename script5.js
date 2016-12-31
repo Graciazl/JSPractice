@@ -180,3 +180,33 @@ function widthControl(time) {
 
     return width;
 }
+
+function colorControl(airIdx) {
+    var color;
+
+    switch (true) {
+        case airIdx <= 50:
+            color = '#92f22a';
+            break;
+        case airIdx > 50 && airIdx <= 100:
+            color = '#64ddbb';
+            break;
+        case airIdx > 100 && airIdx <= 150:
+            color = '#7bb0a6';
+            break;
+        case airIdx > 150 && airIdx <= 210:
+            color = '#a0b58d';
+            break;
+        case airIdx > 210 && airIdx <= 300:
+            color = '#8c7151';
+            break;
+        case airIdx > 300 && airIdx <= 400:
+            color = '#fd5b03';
+            break;
+        case airIdx > 400:
+            color = '#cf000f';
+            break;
+    }
+
+    return color;
+}
