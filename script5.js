@@ -167,6 +167,21 @@ function calculateData(city, time) {
     }
 }
 
+function renderChart(airIdx, time) {
+    document.getElementById('chartDisplay').innerHTML = '';
+
+    for (var i = 0; i < airIdx.length; i++) {
+        var newDiv = document.createElement('div');
+
+        newDiv.style.height = airIdx[i] + 'px';
+        newDiv.style.width = widthControl(time);
+        newDiv.style.background = colorControl(airIdx[i]);
+        newDiv.style.display = 'inline-block';
+
+        document.getElementById('chartDisplay').appendChild(newDiv);
+    }
+}
+
 function widthControl(time) {
     var width;
 
