@@ -166,3 +166,17 @@ function calculateData(city, time) {
         return airArr;
     }
 }
+
+function widthControl(time) {
+    var width;
+
+    if (time === 'week') {
+        width = '20px';
+    } else if (time === 'month') {
+        width = '50px';
+    } else {
+        width = '10px';
+    }
+
+    return width;
+}
