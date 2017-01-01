@@ -35,9 +35,21 @@ leftOut.addEventListener('click', function() {
 });
 
 rightOut.addEventListener('click', function() {
-    alert(arr[arr.length - 1] + ' has been deleted.')
+    alert(arr[arr.length - 1] + ' has been deleted.');
     arr.pop();
     render(arr);
+});
+
+result.addEventListener('click', function (e) {
+    if (e.target.nodeName === 'DIV') {
+        var num = e.target.firstChild.nodeValue,
+            idx = arr.indexOf(num);
+
+        alert(num + ' has been deleted.');
+        arr.splice(idx, 1);
+        render(arr);
+    }
+
 });
 
 function render(arr) {
