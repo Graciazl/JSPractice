@@ -21,7 +21,7 @@ leftIn.addEventListener('click', function() {
 
 rightIn.addEventListener('click', function() {
     var num = numInput.value;
-    
+
     if(!numInput.validity.valueMissing) {
         arr.push(num);
         render(arr);
@@ -29,11 +29,13 @@ rightIn.addEventListener('click', function() {
 });
 
 leftOut.addEventListener('click', function() {
+    alert(arr[0] + ' has been deleted.');
     arr.shift();
     render(arr);
 });
 
 rightOut.addEventListener('click', function() {
+    alert(arr[arr.length - 1] + ' has been deleted.')
     arr.pop();
     render(arr);
 });
