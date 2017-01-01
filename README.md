@@ -1,8 +1,15 @@
 # JS Practice
 
-### Practice 1 : DOM events
+## Practice 1 : DOM events
+#### Purpose
 * Understand the basic concept of DOM;
-* Use DOM event to display the data input by user.
+* Use DOM event to display the data input.
+
+#### Requirements
+Display the air quality index inputted by user.
+
+### Screen shot
+
 
 ### Practice 2 : Data processing and creat dynamic DOM elements
 * Learn how to deal with data;
