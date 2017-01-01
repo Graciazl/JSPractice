@@ -12,14 +12,20 @@ var arr = [],
 
 leftIn.addEventListener('click', function() {
     var num = numInput.value;
-    arr.unshift(num);
-    render(arr);
+
+    if(!numInput.validity.valueMissing) {
+        arr.unshift(num);
+        render(arr);
+    }
 });
 
 rightIn.addEventListener('click', function() {
     var num = numInput.value;
-    arr.push(num);
-    render(arr);
+    
+    if(!numInput.validity.valueMissing) {
+        arr.push(num);
+        render(arr);
+    }
 });
 
 leftOut.addEventListener('click', function() {
