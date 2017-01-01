@@ -8,7 +8,9 @@
 #### Purpose
 * Understand the basic concept of DOM;
 * Use DOM event to display the data input.
+
 #### Requirements
 Display the air quality index inputted by user.
+
 #### Screen shot
 ![Air index](https://github.com/Graciazl/picture/blob/master/practice1.png)
