@@ -11,13 +11,19 @@ var arr = [],
     leftOut = document.getElementById('leftOut'),
     rightOut = document.getElementById('rightOut');
 
-leftIn.addEventListener('click', function() {
+leftIn.addEventListener('click', function () {
     var num = numInput.value;
 
-    if (numInput.checkValidity() === false) {
-        val.innerHTML = 'Please enter number between 10 to 100.';
+    if (numInput.checkValidity()) {
+        if (arr.length < 60) {
+            arr.unshift(num);
+            render(arr);
+        } else {
+            val.innerHTML = 'The total number is limited to 60.';
+            render(arr);
+        }
     } else {
-        arr.unshift(num);
+        val.innerHTML = 'Please enter number between 10 to 100.';
         render(arr);
     }
 });
@@ -25,10 +31,16 @@ leftIn.addEventListener('click', function() {
 rightIn.addEventListener('click', function() {
     var num = numInput.value;
 
-    if (numInput.checkValidity() === false) {
-        val.innerHTML = 'Please enter number between 10 to 100.';
+    if (numInput.checkValidity()) {
+        if (arr.length < 60) {
+            arr.push(num);
+            render(arr);
+        } else {
+            val.innerHTML = 'The total number is limited to 60.';
+            render(arr);
+        }
     } else {
-        arr.push(num);
+        val.innerHTML = 'Please enter number between 10 to 100.';
         render(arr);
     }
 });
@@ -56,14 +68,6 @@ result.addEventListener('click', function (e) {
     }
 
 });
-
-/*function inputValidation(input) {
-    if (input.checkValidity() === false) {
-        /!*result.innerHTML = input.validationMessage;*!/
-
-        result.innerHTML = "Warring";
-    }
-}*/
 
 function render(arr) {
     result.innerHTML = '';
