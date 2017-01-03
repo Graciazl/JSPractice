@@ -74,16 +74,14 @@ function render(arr) {
 
     if (arr.length !== 0) {
         for (var i = 0; i < arr.length; i++) {
-            var newDiv = document.createElement('div'),
-                text = document.createTextNode(arr[i]);
+            var newDiv = document.createElement('div');
 
             newDiv.style.background = 'red';
             newDiv.style.color = 'white';
-            newDiv.style.padding = '10px';
-            newDiv.style.margin = '10px';
+            newDiv.style.height = arr[i] + 'px';
+            newDiv.style.width = '12px';
             newDiv.style.display = 'inline-block';
 
-            newDiv.appendChild(text);
             result.appendChild(newDiv);
         }
     }
