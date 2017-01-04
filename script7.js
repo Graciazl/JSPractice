@@ -9,7 +9,8 @@ var arr = [],
     leftIn = document.getElementById('leftIn'),
     rightIn = document.getElementById('rightIn'),
     leftOut = document.getElementById('leftOut'),
-    rightOut = document.getElementById('rightOut');
+    rightOut = document.getElementById('rightOut'),
+    bSort = document.getElementById('bubble');
 
 leftIn.addEventListener('click', function () {
     var num = numInput.value;
@@ -66,8 +67,28 @@ result.addEventListener('click', function (e) {
         arr.splice(idx, 1);
         render(arr);
     }
-
 });
+
+bSort.addEventListener('click', function(){
+    bubbleSort(arr);
+    render(arr);
+});
+
+function bubbleSort(arr) {
+    var temp;
+
+    for (var i = 0; i < arr.length - 1; i++) {
+        for (var j = 0; j < arr.length - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+
+    return arr;
+}
 
 function render(arr) {
     result.innerHTML = '';
