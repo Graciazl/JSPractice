@@ -12,7 +12,7 @@ var arr = [],
     rightOut = document.getElementById('rightOut'),
     bSort = document.getElementById('bubble');
 
-leftIn.addEventListener('click', function () {
+leftIn.addEventListener('click', function() {
     var num = numInput.value;
 
     if (numInput.checkValidity()) {
@@ -58,9 +58,10 @@ rightOut.addEventListener('click', function() {
     render(arr);
 });
 
-result.addEventListener('click', function (e) {
+result.addEventListener('click', function(e) {
     if (e.target.nodeName === 'DIV') {
-        var num = e.target.firstChild.nodeValue,
+        var height = e.target.style.height,
+            num = height.split("px")[0];
             idx = arr.indexOf(num);
 
         alert(num + ' has been deleted.');
@@ -89,6 +90,7 @@ function bubbleSort(arr) {
 
     return arr;
 }
+
 
 function render(arr) {
     result.innerHTML = '';
