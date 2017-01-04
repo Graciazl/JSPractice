@@ -61,7 +61,7 @@ rightOut.addEventListener('click', function() {
 result.addEventListener('click', function(e) {
     if (e.target.nodeName === 'DIV') {
         var height = e.target.style.height,
-            num = height.split("px")[0];
+            num = height.split("px")[0],  //Use split to transfer the height string into array.
             idx = arr.indexOf(num);
 
         alert(num + ' has been deleted.');
@@ -90,7 +90,6 @@ function bubbleSort(arr) {
 
     return arr;
 }
-
 
 function render(arr) {
     result.innerHTML = '';
