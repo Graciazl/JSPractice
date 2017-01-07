@@ -7,8 +7,17 @@ var arr = [],
     result = document.getElementById('result');
 
 function getInput() {
-    var text = input.value;
-    return text.split(' ');
+    var text = input.value,
+        replacedText = text.replace(/\t+|\r+|\n+|\s+|\,+/g, '\,'),//replace tab,return,space into comma
+        newText = replacedText.split(',');
+
+    var index = newText.indexOf('');
+    while (index !== -1) {
+        newText.splice(index, 1);
+        index = newText.indexOf('');
+    }
+
+    return newText;
 }
 
 function render(arr) {
