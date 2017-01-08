@@ -1,13 +1,10 @@
 /**
  * Created by Gracia on 17/1/4.
  */
-var arr = [],
-    input = document.getElementById('textInput'),
-    submit = document.getElementById('submit'),
-    result = document.getElementById('result');
+var arr = [];
 
 function getInput() {
-    var text = input.value,
+    var text = document.getElementById('textInput').value,
         replacedText = text.replace(/\t+|\r+|\n+|\s+|\,+/g, '\,'),//replace tab,return,space into comma
         newText = replacedText.split(',');
 
@@ -21,7 +18,7 @@ function getInput() {
 }
 
 function render(arr) {
-    result.innerHTML = '';
+    document.getElementById('result').innerHTML = '';
 
     if (arr.length !== 0) {
         for (var i = 0; i < arr.length; i++) {
@@ -35,12 +32,12 @@ function render(arr) {
             newDiv.style.display = 'inline-block';
 
             newDiv.appendChild(text);
-            result.appendChild(newDiv);
+            document.getElementById('result').appendChild(newDiv);
         }
     }
 }
 
-submit.addEventListener('click', function() {
+document.getElementById('submit').addEventListener('click', function() {
     arr = getInput();
     render(arr);
 });
