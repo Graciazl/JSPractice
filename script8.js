@@ -17,8 +17,41 @@ function getInput() {
     return newText;
 }
 
+function search() {
+    var input = document.getElementById('searchInput').value,
+        remind = document.getElementById('remind'),
+        count = 0,
+        len = arr.length;
+
+    if (len !== 0) {
+        var index = arr.indexOf(input);
+
+        render(arr);
+
+        for (var i = 0; i < len; i++) {
+            if (arr[i] === input) {
+                var highlight = document.getElementById('result').childNodes[i];
+                highlight.style.background = 'blue';
+                count++;
+            }
+        }
+
+        if (count === 0) {
+            remind.innerHTML = 'No result matched.';
+        } else if (count === 1) {
+            remind.innerHTML = '1 result matched';
+        } else {
+            remind.innerHTML = count + ' results matched';
+        }
+
+    } else {
+        remind.innerHTML = 'Can not search without content.';
+    }
+}
+
 function render(arr) {
     document.getElementById('result').innerHTML = '';
+    document.getElementById('remind').innerHTML = '';
 
     if (arr.length !== 0) {
         for (var i = 0; i < arr.length; i++) {
@@ -41,3 +74,5 @@ document.getElementById('submit').addEventListener('click', function() {
     arr = getInput();
     render(arr);
 });
+
+document.getElementById('searchBtn').addEventListener('click', search);
