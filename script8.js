@@ -17,7 +17,7 @@ function getInput() {
     return newText;
 }
 
-function search() {
+function fuzzySearch() {
     var input = document.getElementById('searchInput').value,
         remind = document.getElementById('remind'),
         count = 0,
@@ -29,7 +29,10 @@ function search() {
         render(arr);
 
         for (var i = 0; i < len; i++) {
-            if (arr[i] === input) {
+            var reg = new RegExp(input + '+', 'g'),//fuzzy matching with regular expression.
+                compare = arr[i].match(reg);
+
+            if (compare !== null) {
                 var highlight = document.getElementById('result').childNodes[i];
                 highlight.style.background = 'blue';
                 count++;
@@ -75,4 +78,4 @@ document.getElementById('submit').addEventListener('click', function() {
     render(arr);
 });
 
-document.getElementById('searchBtn').addEventListener('click', search);
+document.getElementById('searchBtn').addEventListener('click', fuzzySearch);
