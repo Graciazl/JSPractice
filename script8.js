@@ -5,7 +5,7 @@ var arr = [];
 
 function getInput() {
     var text = document.getElementById('textInput').value,
-        replacedText = text.replace(/\t+|\r+|\n+|\s+|\,+/g, '\,'),//replace tab,return,space into comma
+        replacedText = text.replace(/\r+|\n+|\s+|\,+/g, '\,'),//replace tab,return,space into comma
         newText = replacedText.split(',');
 
     var index = newText.indexOf('');
