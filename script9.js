@@ -46,3 +46,10 @@ document.getElementById('tagInput').addEventListener('keydown', function(e) {
         render(arr, 'resultTag');
     }
 });
+
+document.getElementById('submit').addEventListener('click', function() {
+    var value = document.getElementById('hobbies').value,
+        arr = getInput(value);
+
+    render(arr, 'resultHobbies');
+});
