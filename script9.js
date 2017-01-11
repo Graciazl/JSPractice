@@ -13,7 +13,13 @@ function getInput(value) {
         index = result.indexOf('');
     }
 
-    return result;
+    return unique(result);
+}
+
+function unique(arr) {
+    var set = new Set(arr);
+
+    return Array.from(set);
 }
 
 function render(arr, ele) {
@@ -40,16 +46,16 @@ document.getElementById('tagInput').addEventListener('keydown', function(e) {
     var key = e.keyCode;
 
     if (key === 13 || key === 32 || key === 188){
-        var value = document.getElementById('tagInput').value,
-            arr = getInput(value);
+        var tagValue = document.getElementById('tagInput').value,
+            tagArr = getInput(tagValue);
 
-        render(arr, 'resultTag');
+        render(tagArr, 'resultTag');
     }
 });
 
 document.getElementById('submit').addEventListener('click', function() {
-    var value = document.getElementById('hobbies').value,
-        arr = getInput(value);
+    var hobbiesValue = document.getElementById('hobbies').value,
+        hobbiesArr = getInput(hobbiesValue);
 
-    render(arr, 'resultHobbies');
+    render(hobbiesArr, 'resultHobbies');
 });
