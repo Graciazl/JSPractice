@@ -5,21 +5,32 @@
 
 function getInput(value) {
     var text = value.replace(/\r+|\n+|\s+|\,+/g, '\,'),
-        result = text.split(',');
+        arr = text.split(',');
 
-    var index = result.indexOf('');
+    var index = arr.indexOf('');
     while (index !== -1) {
-        result.splice(index, 1);
-        index = result.indexOf('');
+        arr.splice(index, 1);
+        index = arr.indexOf('');
     }
 
-    return unique(result);
+    return lengthControl(unique(arr));
 }
 
 function unique(arr) {
     var set = new Set(arr);
 
     return Array.from(set);
+}
+
+function lengthControl(arr) {
+    var len = arr.length;
+
+    while (len > 10) {
+        arr.shift();
+        len = arr.length;
+    }
+
+    return arr;
 }
 
 function render(arr, ele) {
