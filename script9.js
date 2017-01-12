@@ -53,20 +53,21 @@ function render(arr, ele) {
     }
 }
 
+function getResult(ele1, ele2) {
+    var value = document.getElementById(ele1).value,
+        arr = getInput(value);
+
+    render(arr, ele2);
+}
+
 document.getElementById('tagInput').addEventListener('keydown', function(e) {
     var key = e.keyCode;
 
     if (key === 13 || key === 32 || key === 188){
-        var tagValue = document.getElementById('tagInput').value,
-            tagArr = getInput(tagValue);
-
-        render(tagArr, 'resultTag');
+        getResult('tagInput', 'resultTag');
     }
 });
 
 document.getElementById('submit').addEventListener('click', function() {
-    var hobbiesValue = document.getElementById('hobbies').value,
-        hobbiesArr = getInput(hobbiesValue);
-
-    render(hobbiesArr, 'resultHobbies');
+    getResult('hobbies', 'resultHobbies');
 });
