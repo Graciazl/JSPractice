@@ -83,3 +83,14 @@ document.getElementById('resultTag').addEventListener('mouseover', function(e) {
 document.getElementById('resultTag').addEventListener('mouseout', function() {
     getResult('tagInput', 'resultTag');
 });
+
+document.getElementById('resultTag').addEventListener('click', function(e) {
+    if (e.target.nodeName === 'DIV') {
+        var value = e.target.childNodes[0].nodeValue,
+            arr = getInput(document.getElementById('tagInput').value);
+            index = arr.indexOf(value);
+
+        arr.splice(index, 1);
+        render(arr, 'resultTag');
+    }
+});
