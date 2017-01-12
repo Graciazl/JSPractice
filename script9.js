@@ -71,3 +71,15 @@ document.getElementById('tagInput').addEventListener('keydown', function(e) {
 document.getElementById('submit').addEventListener('click', function() {
     getResult('hobbies', 'resultHobbies');
 });
+
+document.getElementById('resultTag').addEventListener('mouseover', function(e) {
+    if (e.target.nodeName === 'DIV') {
+        var value = e.target.childNodes[0].nodeValue;
+        e.target.style.background = 'red';
+        e.target.innerHTML = 'Delete ' + value;
+    }
+});
+
+document.getElementById('resultTag').addEventListener('mouseout', function() {
+    getResult('tagInput', 'resultTag');
+});
