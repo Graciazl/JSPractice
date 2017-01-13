@@ -5,6 +5,16 @@
 var arrTag = [],
     arrHobbies = [];
 
+function SessionStorageStore() { }
+
+SessionStorageStore.prototype.load = function(key) {
+    return sessionStorage.getItem(key);
+};
+
+SessionStorageStore.prototype.save = function(key, data) {
+    return sessionStorage.setItem(key, data);
+};
+
 function getInput(value) {
     var text = value.replace(/\r+|\n+|\s+|\,+/g, '\,'),
         arr = text.split(',');
@@ -16,7 +26,6 @@ function getInput(value) {
     }
 
     return arr;
-/*    return lengthControl(unique(arr));*/
 }
 
 function joinArr(arr1, arr2) {
