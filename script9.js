@@ -23,8 +23,8 @@ var results = (function(key, data) {
             return data;
         },
 
-        save: function() {
-            storage.save(JSON.stringify(key, data));
+        save: function(key, data) {
+            storage.save(key, JSON.stringify(data));
         }
     }
 }());
@@ -85,22 +85,27 @@ function render(arr, ele) {
     }
 }
 
-function getResult(ele1, ele2, arr) {
+function getResult(ele1, ele2, arr, key) {
     var value = document.getElementById(ele1).value;
     arr = joinArr(arr, getInput(value));
+    results.save(key, arr);
     render(arr, ele2);
 }
 
 document.getElementById('tagInput').addEventListener('keydown', function(e) {
     var key = e.keyCode;
 
+    arrTag = results.load('tags', arrTag);
+
     if (key === 13 || key === 32 || key === 188){
-        getResult('tagInput', 'resultTag', arrTag);
+        getResult('tagInput', 'resultTag', arrTag, 'tags');
     }
 });
 
 document.getElementById('submit').addEventListener('click', function() {
-    getResult('hobbies', 'resultHobbies', arrHobbies);
+    arrHobbies = results.load('hobbies', arrHobbies);
+
+    getResult('hobbies', 'resultHobbies', arrHobbies, 'hobbies');
 });
 
 document.getElementById('resultTag').addEventListener('mouseover', function(e) {
@@ -112,7 +117,9 @@ document.getElementById('resultTag').addEventListener('mouseover', function(e) {
 });
 
 document.getElementById('resultTag').addEventListener('mouseout', function() {
-    getResult('tagInput', 'resultTag', arrTag);
+    arrTag = results.load('tags', arrTag);
+
+    render(arrTag, 'resultTag');
 });
 
 document.getElementById('resultTag').addEventListener('click', function(e) {
@@ -121,6 +128,7 @@ document.getElementById('resultTag').addEventListener('click', function(e) {
             index = arrTag.indexOf(value);
 
         arrTag.splice(index, 1);
+        results.save('tags', arrTag);
         render(arrTag, 'resultTag');
     }
 });
