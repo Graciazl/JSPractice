@@ -2,6 +2,8 @@
  * Created by Gracia on 17/1/9.
  */
 
+var arrTag = [],
+    arrHobbies = [];
 
 function getInput(value) {
     var text = value.replace(/\r+|\n+|\s+|\,+/g, '\,'),
@@ -13,7 +15,14 @@ function getInput(value) {
         index = arr.indexOf('');
     }
 
-    return lengthControl(unique(arr));
+    return arr;
+/*    return lengthControl(unique(arr));*/
+}
+
+function joinArr(arr1, arr2) {
+    var arr = arr1.concat(arr2);
+
+    return lengthControl(unique(arr)).slice();
 }
 
 function unique(arr) {
@@ -53,10 +62,9 @@ function render(arr, ele) {
     }
 }
 
-function getResult(ele1, ele2) {
-    var value = document.getElementById(ele1).value,
-        arr = getInput(value);
-
+function getResult(ele1, ele2, arr) {
+    var value = document.getElementById(ele1).value;
+    arr = joinArr(arr, getInput(value));
     render(arr, ele2);
 }
 
@@ -64,12 +72,12 @@ document.getElementById('tagInput').addEventListener('keydown', function(e) {
     var key = e.keyCode;
 
     if (key === 13 || key === 32 || key === 188){
-        getResult('tagInput', 'resultTag');
+        getResult('tagInput', 'resultTag', arrTag);
     }
 });
 
 document.getElementById('submit').addEventListener('click', function() {
-    getResult('hobbies', 'resultHobbies');
+    getResult('hobbies', 'resultHobbies', arrHobbies);
 });
 
 document.getElementById('resultTag').addEventListener('mouseover', function(e) {
@@ -81,16 +89,15 @@ document.getElementById('resultTag').addEventListener('mouseover', function(e) {
 });
 
 document.getElementById('resultTag').addEventListener('mouseout', function() {
-    getResult('tagInput', 'resultTag');
+    getResult('tagInput', 'resultTag', arrTag);
 });
 
 document.getElementById('resultTag').addEventListener('click', function(e) {
     if (e.target.nodeName === 'DIV') {
         var value = e.target.childNodes[0].nodeValue,
-            arr = getInput(document.getElementById('tagInput').value);
-            index = arr.indexOf(value);
+            index = arrTag.indexOf(value);
 
-        arr.splice(index, 1);
-        render(arr, 'resultTag');
+        arrTag.splice(index, 1);
+        render(arrTag, 'resultTag');
     }
 });
