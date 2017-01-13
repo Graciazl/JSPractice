@@ -1,7 +1,6 @@
 /**
  * Created by Gracia on 17/1/9.
  */
-
 var arrTag = [],
     arrHobbies = [];
 
@@ -14,6 +13,21 @@ SessionStorageStore.prototype.load = function(key) {
 SessionStorageStore.prototype.save = function(key, data) {
     return sessionStorage.setItem(key, data);
 };
+
+var results = (function(key, data) {
+    var storage = new SessionStorageStore();
+
+    return {
+        load: function(key, data) {
+            data = JSON.parse(storage.load(key)) || [];
+            return data;
+        },
+
+        save: function() {
+            storage.save(JSON.stringify(key, data));
+        }
+    }
+}());
 
 function getInput(value) {
     var text = value.replace(/\r+|\n+|\s+|\,+/g, '\,'),
