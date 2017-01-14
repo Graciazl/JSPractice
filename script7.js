@@ -75,7 +75,7 @@ bSort.addEventListener('click', function(){
     render(arr);
 });
 
-function bubbleSort(arr) {
+/*function bubbleSort(arr) {
     var temp;
 
     for (var i = 0; i < arr.length - 1; i++) {
@@ -86,6 +86,28 @@ function bubbleSort(arr) {
                 arr[j + 1] = temp;
             }
         }
+    }
+
+    return arr;
+}*/
+
+function bubbleSort(arr) {
+    var temp;
+
+    for (var i = 0; i < arr.length - 1; i++) {
+        setTimeout(function(num) {
+            return function() {
+                for (var j = 0; j < arr.length - 1 - num; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+
+                render(arr);
+            }
+        }(i), 800 * i);
     }
 
     return arr;
@@ -100,8 +122,9 @@ function render(arr) {
 
             newDiv.style.background = 'red';
             newDiv.style.color = 'white';
-            newDiv.style.height = arr[i] + 'px';
+            newDiv.style.height = arr[i] * 2 + 'px';
             newDiv.style.width = '12px';
+            newDiv.style.margin = '3px';
             newDiv.style.display = 'inline-block';
 
             result.appendChild(newDiv);
