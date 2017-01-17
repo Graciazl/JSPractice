@@ -4,7 +4,7 @@
 * Learn how to deal with data;
 * Create dynamic DOM elements to show the content.
 
-## Practice 1 : Enter and display air quality index
+## Practice 1 : Air quality index enter and display
 #### Purpose
 * Understand the basic concept of DOM;
 * Use DOM event to display the data input.
