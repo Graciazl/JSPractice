@@ -1,4 +1,7 @@
 # JS Practice
+## Practice 7 : Bubble sort algorithm visualization
+
+## Practice 6 : Stack and queue
 
 ## Practice 2 : Data processing and creat dynamic DOM elements
 * Learn how to deal with data;
